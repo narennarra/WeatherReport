@@ -30,7 +30,7 @@ namespace WeatherReport.Models
         [Display(Name = "Temperature")]
         public Nullable<double> temperature { get; set; }
         [Display(Name = "Time")]
-        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
+        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy  H:mm}")]
         public Nullable<System.DateTime> time { get; set; }
          [Display(Name = "Wind Chill")]
         public Nullable<double> windChill { get; set; }
