@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WeatherReportModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="WeatherReportModelStoreContainer">
+          <EntitySet Name="City" EntityType="WeatherReportModel.Store.City" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Weather" EntityType="WeatherReportModel.Store.Weather" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Weather_City_cityID" Association="WeatherReportModel.Store.FK_Weather_City_cityID">
+            <End Role="City" EntitySet="City" />
+            <End Role="Weather" EntitySet="Weather" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="cityId" />
+          </Key>
+          <Property Name="cityId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="cityName" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Weather">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="cityId" Type="int" Nullable="false" />
+          <Property Name="clothingLayers" Type="nvarchar" MaxLength="100" />
+          <Property Name="issued" Type="datetime" Nullable="false" />
+          <Property Name="location" Type="int" Nullable="false" />
+          <Property Name="past" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="pressure" Type="float" />
+          <Property Name="rainfall" Type="float" />
+          <Property Name="relativeHumidity" Type="float" Nullable="false" />
+          <Property Name="status" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="temperature" Type="float" />
+          <Property Name="time" Type="datetime" />
+          <Property Name="windChill" Type="float" />
+          <Property Name="windDirection" Type="float" />
+          <Property Name="windGustSpeed" Type="float" />
+          <Property Name="windProofLayers" Type="nvarchar" MaxLength="50" />
+          <Property Name="windSpeed" Type="float" />
+          <Property Name="windSpeedDesc" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_Weather_City_cityID">
+          <End Role="City" Type="WeatherReportModel.Store.City" Multiplicity="1" />
+          <End Role="Weather" Type="WeatherReportModel.Store.Weather" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="cityId" />
+            </Principal>
+            <Dependent Role="Weather">
+              <PropertyRef Name="cityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WeatherReportModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="WeatherReportEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cities" EntityType="WeatherReportModel.City" />
+          <EntitySet Name="Weathers" EntityType="WeatherReportModel.Weather" />
+          <AssociationSet Name="FK_Weather_City_cityID" Association="WeatherReportModel.FK_Weather_City_cityID">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Weather" EntitySet="Weathers" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="cityId" />
+          </Key>
+          <Property Name="cityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cityName" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Weathers" Relationship="WeatherReportModel.FK_Weather_City_cityID" FromRole="City" ToRole="Weather" />
+        </EntityType>
+        <EntityType Name="Weather">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="cityId" Nullable="false" />
+          <Property Type="String" Name="clothingLayers" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="issued" Nullable="false" />
+          <Property Type="Int32" Name="location" Nullable="false" />
+          <Property Type="String" Name="past" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Double" Name="pressure" />
+          <Property Type="Double" Name="rainfall" />
+          <Property Type="Double" Name="relativeHumidity" Nullable="false" />
+          <Property Type="String" Name="status" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="temperature" />
+          <Property Type="DateTime" Name="time" />
+          <Property Type="Double" Name="windChill" />
+          <Property Type="Double" Name="windDirection" />
+          <Property Type="Double" Name="windGustSpeed" />
+          <Property Type="String" Name="windProofLayers" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Double" Name="windSpeed" />
+          <Property Type="String" Name="windSpeedDesc" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="City" Relationship="WeatherReportModel.FK_Weather_City_cityID" FromRole="Weather" ToRole="City" />
+        </EntityType>
+        <Association Name="FK_Weather_City_cityID">
+          <End Type="WeatherReportModel.City" Role="City" Multiplicity="1" />
+          <End Type="WeatherReportModel.Weather" Role="Weather" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="cityId" />
+            </Principal>
+            <Dependent Role="Weather">
+              <PropertyRef Name="cityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WeatherReportModelStoreContainer" CdmEntityContainer="WeatherReportEntities">
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="WeatherReportModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="cityId" ColumnName="cityId" />
+                <ScalarProperty Name="cityName" ColumnName="cityName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Weathers">
+            <EntityTypeMapping TypeName="WeatherReportModel.Weather">
+              <MappingFragment StoreEntitySet="Weather">
+                <ScalarProperty Name="windSpeedDesc" ColumnName="windSpeedDesc" />
+                <ScalarProperty Name="windSpeed" ColumnName="windSpeed" />
+                <ScalarProperty Name="windProofLayers" ColumnName="windProofLayers" />
+                <ScalarProperty Name="windGustSpeed" ColumnName="windGustSpeed" />
+                <ScalarProperty Name="windDirection" ColumnName="windDirection" />
+                <ScalarProperty Name="windChill" ColumnName="windChill" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="temperature" ColumnName="temperature" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="relativeHumidity" ColumnName="relativeHumidity" />
+                <ScalarProperty Name="rainfall" ColumnName="rainfall" />
+                <ScalarProperty Name="pressure" ColumnName="pressure" />
+                <ScalarProperty Name="past" ColumnName="past" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="issued" ColumnName="issued" />
+                <ScalarProperty Name="clothingLayers" ColumnName="clothingLayers" />
+                <ScalarProperty Name="cityId" ColumnName="cityId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="WeatherReport">
+        <EntityTypeShape EntityType="WeatherReportModel.City" Width="1.5" PointX="0.75" PointY="2.125" Height="1.4279589843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="WeatherReportModel.Weather" Width="1.5" PointX="3" PointY="0.75" Height="4.0575162760416656" />
+        <AssociationConnector Association="WeatherReportModel.FK_Weather_City_cityID" >
+          <ConnectorPoint PointX="2.25" PointY="2.8389794921875" />
+          <ConnectorPoint PointX="3" PointY="2.8389794921875" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

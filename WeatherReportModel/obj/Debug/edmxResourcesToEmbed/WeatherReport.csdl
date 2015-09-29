@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WeatherReportModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="WeatherReportEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cities" EntityType="WeatherReportModel.City" />
+    <EntitySet Name="Weathers" EntityType="WeatherReportModel.Weather" />
+    <AssociationSet Name="FK_Weather_City_cityID" Association="WeatherReportModel.FK_Weather_City_cityID">
+      <End Role="City" EntitySet="Cities" />
+      <End Role="Weather" EntitySet="Weathers" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="cityId" />
+    </Key>
+    <Property Name="cityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cityName" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Weathers" Relationship="WeatherReportModel.FK_Weather_City_cityID" FromRole="City" ToRole="Weather" />
+  </EntityType>
+  <EntityType Name="Weather">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="cityId" Nullable="false" />
+    <Property Type="String" Name="clothingLayers" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="issued" Nullable="false" />
+    <Property Type="Int32" Name="location" Nullable="false" />
+    <Property Type="String" Name="past" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Double" Name="pressure" />
+    <Property Type="Double" Name="rainfall" />
+    <Property Type="Double" Name="relativeHumidity" Nullable="false" />
+    <Property Type="String" Name="status" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Double" Name="temperature" />
+    <Property Type="DateTime" Name="time" />
+    <Property Type="Double" Name="windChill" />
+    <Property Type="Double" Name="windDirection" />
+    <Property Type="Double" Name="windGustSpeed" />
+    <Property Type="String" Name="windProofLayers" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Double" Name="windSpeed" />
+    <Property Type="String" Name="windSpeedDesc" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="City" Relationship="WeatherReportModel.FK_Weather_City_cityID" FromRole="Weather" ToRole="City" />
+  </EntityType>
+  <Association Name="FK_Weather_City_cityID">
+    <End Type="WeatherReportModel.City" Role="City" Multiplicity="1" />
+    <End Type="WeatherReportModel.Weather" Role="Weather" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="cityId" />
+      </Principal>
+      <Dependent Role="Weather">
+        <PropertyRef Name="cityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

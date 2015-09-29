@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WeatherReportModelStoreContainer" CdmEntityContainer="WeatherReportEntities">
+    <EntitySetMapping Name="Cities">
+      <EntityTypeMapping TypeName="WeatherReportModel.City">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="cityId" ColumnName="cityId" />
+          <ScalarProperty Name="cityName" ColumnName="cityName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Weathers">
+      <EntityTypeMapping TypeName="WeatherReportModel.Weather">
+        <MappingFragment StoreEntitySet="Weather">
+          <ScalarProperty Name="windSpeedDesc" ColumnName="windSpeedDesc" />
+          <ScalarProperty Name="windSpeed" ColumnName="windSpeed" />
+          <ScalarProperty Name="windProofLayers" ColumnName="windProofLayers" />
+          <ScalarProperty Name="windGustSpeed" ColumnName="windGustSpeed" />
+          <ScalarProperty Name="windDirection" ColumnName="windDirection" />
+          <ScalarProperty Name="windChill" ColumnName="windChill" />
+          <ScalarProperty Name="time" ColumnName="time" />
+          <ScalarProperty Name="temperature" ColumnName="temperature" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="relativeHumidity" ColumnName="relativeHumidity" />
+          <ScalarProperty Name="rainfall" ColumnName="rainfall" />
+          <ScalarProperty Name="pressure" ColumnName="pressure" />
+          <ScalarProperty Name="past" ColumnName="past" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="issued" ColumnName="issued" />
+          <ScalarProperty Name="clothingLayers" ColumnName="clothingLayers" />
+          <ScalarProperty Name="cityId" ColumnName="cityId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,8 @@
+E:\Vigil\WeatherReport\AppDatabase\sql\debug\WeatherReport_Script.PreDeployment.sql
+E:\Vigil\WeatherReport\AppDatabase\sql\debug\WeatherReport_Script.PostDeployment.sql
+E:\Vigil\WeatherReport\AppDatabase\sql\debug\WeatherReport_Database.sqlsettings
+E:\Vigil\WeatherReport\AppDatabase\sql\debug\WeatherReport_Database.sqldeployment
+E:\Vigil\WeatherReport\AppDatabase\sql\debug\WeatherReport_Database.sqlcmdvars
+E:\Vigil\WeatherReport\AppDatabase\sql\debug\AppDatabase.deploymanifest
+E:\Vigil\WeatherReport\AppDatabase\sql\debug\AppDatabase.dbschema
+E:\Vigil\WeatherReport\AppDatabase\obj\Debug\AppDatabase.dbschema

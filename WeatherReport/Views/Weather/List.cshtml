@@ -1,0 +1,129 @@
+﻿@model IEnumerable<WeatherReportModel.Weather>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.cityId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.clothingLayers)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.issued)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.past)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pressure)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rainfall)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.relativeHumidity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.temperature)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.windChill)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.windDirection)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.windGustSpeed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.windProofLayers)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.windSpeed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.windSpeedDesc)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.cityId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.clothingLayers)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.issued)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.location)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.past)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pressure)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rainfall)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.relativeHumidity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.temperature)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.windChill)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.windDirection)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.windGustSpeed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.windProofLayers)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.windSpeed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.windSpeedDesc)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

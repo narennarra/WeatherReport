@@ -1,0 +1,9 @@
+E:\Vigil\WeatherReport\WeatherReportModel\bin\Debug\WeatherReportModel.dll.config
+E:\Vigil\WeatherReport\WeatherReportModel\bin\Debug\WeatherReportModel.dll
+E:\Vigil\WeatherReport\WeatherReportModel\bin\Debug\WeatherReportModel.pdb
+E:\Vigil\WeatherReport\WeatherReportModel\bin\Debug\EntityFramework.dll
+E:\Vigil\WeatherReport\WeatherReportModel\bin\Debug\EntityFramework.SqlServer.dll
+E:\Vigil\WeatherReport\WeatherReportModel\bin\Debug\EntityFramework.xml
+E:\Vigil\WeatherReport\WeatherReportModel\bin\Debug\EntityFramework.SqlServer.xml
+E:\Vigil\WeatherReport\WeatherReportModel\obj\Debug\WeatherReportModel.dll
+E:\Vigil\WeatherReport\WeatherReportModel\obj\Debug\WeatherReportModel.pdb

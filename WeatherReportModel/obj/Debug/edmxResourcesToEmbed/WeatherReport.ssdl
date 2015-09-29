@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WeatherReportModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="WeatherReportModelStoreContainer">
+    <EntitySet Name="City" EntityType="WeatherReportModel.Store.City" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Weather" EntityType="WeatherReportModel.Store.Weather" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Weather_City_cityID" Association="WeatherReportModel.Store.FK_Weather_City_cityID">
+      <End Role="City" EntitySet="City" />
+      <End Role="Weather" EntitySet="Weather" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="cityId" />
+    </Key>
+    <Property Name="cityId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="cityName" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Weather">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="cityId" Type="int" Nullable="false" />
+    <Property Name="clothingLayers" Type="nvarchar" MaxLength="100" />
+    <Property Name="issued" Type="datetime" Nullable="false" />
+    <Property Name="location" Type="int" Nullable="false" />
+    <Property Name="past" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="pressure" Type="float" />
+    <Property Name="rainfall" Type="float" />
+    <Property Name="relativeHumidity" Type="float" Nullable="false" />
+    <Property Name="status" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="temperature" Type="float" />
+    <Property Name="time" Type="datetime" />
+    <Property Name="windChill" Type="float" />
+    <Property Name="windDirection" Type="float" />
+    <Property Name="windGustSpeed" Type="float" />
+    <Property Name="windProofLayers" Type="nvarchar" MaxLength="50" />
+    <Property Name="windSpeed" Type="float" />
+    <Property Name="windSpeedDesc" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <Association Name="FK_Weather_City_cityID">
+    <End Role="City" Type="WeatherReportModel.Store.City" Multiplicity="1" />
+    <End Role="Weather" Type="WeatherReportModel.Store.Weather" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="cityId" />
+      </Principal>
+      <Dependent Role="Weather">
+        <PropertyRef Name="cityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
