@@ -64,11 +64,6 @@ GO
 --------------------------------------------------------------------------------------
 */
 
-
-
-CREATE LOGIN [admin] WITH PASSWORD = '!@#$%^&*()' , CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-CREATE USER [admin] FOR LOGIN [admin] WITH DEFAULT_SCHEMA = dbo;
-
 GO
 /*
 Post-Deployment Script Template							
@@ -83,13 +78,27 @@ Post-Deployment Script Template
 
 
 */
+/*Create user and login to access database*/
+IF  not EXISTS (SELECT * FROM sys.database_principals WHERE name = N'wradmin')
+Begin
 
+CREATE LOGIN [wradmin] WITH PASSWORD=N'wradmin', DEFAULT_DATABASE=[WeatherReport], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
+
+Create User [wradmin] for login [wradmin]
+
+ALTER LOGIN [wradmin] Enable
+
+EXEC sp_addrolemember N'db_owner', N'wradmin'
+
+END
+
+/*Load City information if it doesn't exist*/
 If not exists (Select top 1 * from city)
 Begin
 	Insert into City(cityName) values ('Ashburton')
 	Insert into City(cityName) values ('Auckland')                       
 	Insert into City(cityName) values ('Blenheim')	
-	Insert into City(cityName) values ('Christchurch')                       	
+	Insert into City(cityName) values ('ChristChurch')                       	
 	Insert into City(cityName) values ('Dunedin')
 	Insert into City(cityName) values ('Gisborne')
 	Insert into City(cityName) values ('Gore')
@@ -105,7 +114,7 @@ Begin
 	Insert into City(cityName) values ('Napier')
 	Insert into City(cityName) values ('Nelson')
 	Insert into City(cityName) values ('New-Plymouth')
-	Insert into City(cityName) values ('palmerston-north')
+	Insert into City(cityName) values ('Palmerston-North')
 	Insert into City(cityName) values ('Paraparaumu')
 	Insert into City(cityName) values ('Queenstown')
 	Insert into City(cityName) values ('Rotorua')
@@ -114,8 +123,7 @@ Begin
 	Insert into City(cityName) values ('Tauranga')
 	Insert into City(cityName) values ('Timaru')	
 	Insert into City(cityName) values ('Wanaka')
-	Insert into City(cityName) values ('Wanganui')
-	Insert into City(cityName) values ('Wanganui')
+	Insert into City(cityName) values ('Wanganui')	
 	Insert into City(cityName) values ('Wellington')                       
 	Insert into City(cityName) values ('Westport')
 	Insert into City(cityName) values ('Whakatane')

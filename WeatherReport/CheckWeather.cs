@@ -22,7 +22,7 @@ namespace WeatherReport
                 while (CONTINIUSLOOP)
                 {
                     ProcessWeather();
-                    Thread.Sleep(300000);
+                    Thread.Sleep(60000);
                 }
             }
         }
@@ -31,6 +31,7 @@ namespace WeatherReport
         {
             ThreadStart myThreadDelegate = new ThreadStart(ThreadWork.DoWork);
             Thread myThread = new Thread(myThreadDelegate);
+            myThread.Name = "CheckWeather";            
             myThread.Start();
         }
 

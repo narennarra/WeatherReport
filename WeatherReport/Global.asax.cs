@@ -25,6 +25,7 @@ namespace WeatherReport
             AuthConfig.RegisterAuth();
 
             //Start a Seperate Thread to pick weather information
+            //if(System.Threading.
             CheckWeather.Start();
         }
     }

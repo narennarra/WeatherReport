@@ -9,8 +9,3 @@
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
-
-
-
-CREATE LOGIN [admin] WITH PASSWORD = '!@#$%^&*()' , CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-CREATE USER [admin] FOR LOGIN [admin] WITH DEFAULT_SCHEMA = dbo;

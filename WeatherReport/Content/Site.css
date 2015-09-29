@@ -624,7 +624,7 @@ th
     font-size: 1.2em;
     text-align: left;
     border: none 0px;
-    padding-left: 0;
+    padding-right: 0.25em;
 }
 
 th a
@@ -672,7 +672,7 @@ th.desc a:after
 
 td
 {
-    padding: 0.25em 2em 0.25em 0em;
+    padding: 0.25em 2em 0.25em 0.25em;
     border: 0 none;
 }
 
